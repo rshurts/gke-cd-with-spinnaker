@@ -10,7 +10,7 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 3
 
   node_config {
-    machine_type = "n1-standard-2"
+    machine_type = "n1-standard-1"
   }
 }
 
