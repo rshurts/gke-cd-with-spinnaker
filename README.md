@@ -2,7 +2,9 @@
 
 This is a guide to deploying spinnaker to GKE to set up a continuous delivery pipeline.
 
-> Warning: This is a work in progress. Please review all code and configuration for applicability to your solution and submit pull requests back to improve the quality of this pipeline.
+> **Warning** 
+>
+> This is a work in progress. Please review all code and configuration for applicability to your solution and submit pull requests back to improve the quality of this pipeline.
 
 To Do:
 - [ ] Setup Terraform remote state.
@@ -41,7 +43,9 @@ Run the following commands:
 1. `cd /path/to/repo/terraform`
 1. `terraform apply -var project="$PROJECT" zone="<your GCP zone, like us-central1-a>"`
 
-> Warning: Terraform remote state currently isn't set up, so all state is stored locally. This works for development, but should be changed for production purposes.
+> **Warning**
+>
+> Terraform remote state currently isn't set up, so all state is stored locally. This works for development, but should be changed for production purposes.
 
 ## Setup and save configurations
 
@@ -64,7 +68,9 @@ Run the following commands:
 
 ## Use helm to install jenkins and spinnaker on kubernetes
 
-> Tip: Spinnaker adhears to immutable infrastructure principles. To change the spinnaker configuration change the yaml file and use the `helm upgrade` command.
+> **Tip**
+>
+> Spinnaker adhears to immutable infrastructure principles. To change the spinnaker configuration change the yaml file and use the `helm upgrade` command.
 
 1. `cd /path/to/repo/helm`
 1. `helm init --service-account=tiller`
@@ -74,7 +80,9 @@ Run the following commands:
 
 ## Open jenkins and spinnaker locally
 
-> Tip: Use two separate terminals run these commands. Make sure to `export KUBECONFIG=:/path/to/repo/kubernetes/config.yaml` so `kubectl` works.
+> **Tip**
+>
+> Use two separate terminals run these commands. Make sure to `export KUBECONFIG=:/path/to/repo/kubernetes/config.yaml` so `kubectl` works.
 
 1. `export JENKINS_POD=$(kubectl get pods --namespace default -l "app=cd-jenkins" -o jsonpath="{.items[0].metadata.name}")`
 1. `kubectl port-forward --namespace default $JENKINS_POD 8080`
