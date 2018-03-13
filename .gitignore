@@ -1,0 +1,8 @@
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+kubernetes/client.pem
+kubernetes/client-key.pem
+kubernetes/config.yaml
+helm/spinnaker-config.yaml
+helm/spinnaker-sa.json

@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: CA_DATA
+    server: K8S_SERVER
+  name: K8S_NAME
+contexts:
+- context:
+    cluster: K8S_NAME
+    user: K8S_NAME
+  name: K8S_NAME
+current-context: K8S_NAME
+kind: Config
+preferences: {}
+users:
+- name: K8S_NAME
+  user:
+    client-certificate: client.pem
+    client-key: client-key.pem

@@ -1,0 +1,23 @@
+# This allows spinnaker to deploy across all namespaces.
+# For a tighter policy, where a role needs to be deployed to 
+# namespaces spinnaker is allowed to deploy to, see:
+# https://blog.spinnaker.io/spinnaker-kubernetes-rbac-c40f1f73c172
+
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+ name: spinnaker
+ namespace: default
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: spinnaker-clusterrolebinding
+subjects:
+- kind: ServiceAccount
+  name: spinnaker
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: ""
