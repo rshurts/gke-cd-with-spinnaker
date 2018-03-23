@@ -11,6 +11,10 @@ resource "google_container_cluster" "primary" {
 
   node_config {
     machine_type = "n1-standard-1"
+
+    labels {
+      terraform = "true"
+    }
   }
 }
 
@@ -37,5 +41,10 @@ resource "google_service_account_key" "spinnaker_key" {
 
 # create a bucket for spinnaker to store its pipeline configurations
 resource "google_storage_bucket" "spinnaker_config" {
-  name = "${var.project}-spinnaker-config"
+  name     = "${var.project}-spinnaker-config"
+  location = "${var.region}"
+
+  labels {
+    terraform = "true"
+  }
 }
